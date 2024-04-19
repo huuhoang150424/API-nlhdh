@@ -1,8 +1,11 @@
 const mongoose=require("mongoose")
+const dotenv=require("dotenv")
+
+dotenv.config()
 
 const connect=async ()=>{
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/Task')
+        await mongoose.connect(process.env.MONGODB_URL)
         console.log('Kết nối thành công')
     }
     catch (err) {
