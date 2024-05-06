@@ -22,5 +22,5 @@ app.use(cors())
 route(app)
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`sever running port ${port}`)
 })

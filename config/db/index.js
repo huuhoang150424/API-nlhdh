@@ -2,7 +2,6 @@ const mongoose=require("mongoose")
 const dotenv=require("dotenv")
 
 dotenv.config()
-
 const connect=async ()=>{
     try {
         await mongoose.connect(process.env.MONGODB_URL)
@@ -12,5 +11,4 @@ const connect=async ()=>{
         console.log('Kết nối thất bại')
     }
 }
-
 module.exports={connect}

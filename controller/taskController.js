@@ -1,6 +1,4 @@
 const Tasks=require("../model/taskModel")
-
-
 class taskController {
     async addTask (req,res,next) {
         try {
@@ -36,13 +34,17 @@ class taskController {
             next(err)
         }
     }
-    async deleteTask(req,res,next) {
+    async deleteTask(req, res, next) {
         try {
-            await Tasks.findById(req.params.id);
-            res.status(200).json("delete success")
-        }catch (err) {
-            next(err)
+            const deletedTask = await Tasks.findByIdAndDelete(req.params.id)
+            if (!deletedTask) {
+                return res.status(404).json({ error: "Task not found" })
+            }
+            res.status(200).json({ message: "Delete success" })
+        } catch (err) {
+            next(err);
         }
     }
+    
 }
 module.exports=new taskController
